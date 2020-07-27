@@ -34,7 +34,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Pushups"/>
+            android:text="Pushups"
+            android:onClick ="onCheckboxClicked"/>
 
         <CheckBox
             android:id="@+id/burpees"
@@ -134,7 +135,12 @@
 
     </LinearLayout>
 
-
+    <TextView
+        android:id="@+id/exerciseView"
+        android:layout_width="match_parent"
+        android:layout_height="365dp"
+        android:layout_marginTop="10dp"
+        android:text="" />
 
 
 </LinearLayout>
