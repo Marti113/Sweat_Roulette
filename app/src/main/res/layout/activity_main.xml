@@ -42,14 +42,16 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Burpees"/>
+            android:text="Burpees"
+            android:onClick ="onCheckboxClicked"/>
 
         <CheckBox
             android:id="@+id/squats"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Squats"/>
+            android:text="Squats"
+            android:onClick ="onCheckboxClicked"/>
 
 </LinearLayout>
 
@@ -63,21 +65,24 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Lunge"/>
+            android:text="Lunge"
+            android:onClick ="onCheckboxClicked"/>
 
         <CheckBox
             android:id="@+id/kettleBellSwing"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Kettle Bell Swing"/>
+            android:text="Kettle Bell Swing"
+            android:onClick ="onCheckboxClicked"/>
 
         <CheckBox
             android:id="@+id/situps"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Sit Ups"/>
+            android:text="Sit Ups"
+            android:onClick ="onCheckboxClicked"/>
 
     </LinearLayout>
 
@@ -91,21 +96,24 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Jumping Jacks"/>
+            android:text="Jumping Jacks"
+            android:onClick ="onCheckboxClicked"/>
 
         <CheckBox
             android:id="@+id/shoulderPress"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Shoulder Press"/>
+            android:text="Shoulder Press"
+            android:onClick ="onCheckboxClicked"/>
 
         <CheckBox
             android:id="@+id/mountainClimbers"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Mountain Climbers"/>
+            android:text="Mountain Climbers"
+            android:onClick ="onCheckboxClicked"/>
 
     </LinearLayout>
 
