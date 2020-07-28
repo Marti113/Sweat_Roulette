@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Set<String> exerciseSet;
     //private CheckBox pushUps;
     private TextView exerciseView;
+    private int userReps;
+    TextView numberView;
 
 
     @Override
@@ -31,12 +34,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         exerciseSet = new HashSet<>();
         //pushUps = findViewById(R.id.pushups);
         //need to get a value from the user (Reps) and turn into an int
-        TextView numberView = findViewById(R.id.number);
-        int userReps = 0;
+        numberView = findViewById(R.id.number);
+        userReps = 0;
         try {
             userReps = Integer.parseInt(numberView.getText().toString());
         } catch (NumberFormatException e) {
-            userReps = -1;
         }
         exerciseView = findViewById(R.id.exerciseView);
         //start workout button and click listener
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                workout();
+                generateWorkout();
                 startWorkout.setText("Next!");
             }
         });
@@ -54,27 +56,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String exercise = ((CheckBox) view).getText().toString();
         exerciseSet.add(exercise);
-        exerciseView.setText("" + exerciseSet);
+        //code used for testing
+        //exerciseView.setText("" + exerciseSet);
 
     }
 
 
-    public void workout(){
+    public List<String> generateWorkout(){
 
-//        int numExercises = exerciseSet.size()-1;
-//        ArrayList<String> exerciseList = (ArrayList<String>) exerciseSet;
-//        Collections.shuffle(exerciseList);
-//
-//        //code that loops through the list with a random number 0-userReps
-//        for(int i = 0; i < numExercises; i++ ){
-//            //randomly generated rep number
-//            Random rand = new Random(numExercises);
-//            String currentExercise = exerciseList.get(i);
-//            exerciseView.setText(rand + currentExercise);
-//
-//        }
+        try {
+            userReps = Integer.parseInt(numberView.getText().toString());
+        } catch (NumberFormatException e) {
+        }
 
+        int numExercises = exerciseSet.size()-1;
+        List<String> exerciseList = new ArrayList<>(exerciseSet);
+
+        List<String> testList = new ArrayList<String>();
+        testList.add("pushups");
+        testList.add("situps");
+        testList.add("burpees");
+
+        Collections.shuffle(testList);
+
+        //new List to be filled in for loop with random exercises and reps
+        List<String> shuffledWorkout = new ArrayList<String>();
+
+        //code that loops through the list with a random number 0-userReps
+        for(int i = 0; i < 3; i++ ){
+            Random rand = new Random();
+            int reps = rand.nextInt(userReps)+1;
+            shuffledWorkout.add(reps + " " + testList.get(i));
+        }
+
+        //let user know the workout is finished
+        System.out.println(shuffledWorkout);
+        return shuffledWorkout;
     }
+
 
 
 
