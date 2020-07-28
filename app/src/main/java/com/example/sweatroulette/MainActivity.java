@@ -8,8 +8,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 
+import java.util.List;
+import java.util.Random;
 import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener  {
@@ -56,9 +60,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     public void workout(){
-        //code that loops through the set with a random number 0-userReps
+
+//        int numExercises = exerciseSet.size()-1;
+//        ArrayList<String> exerciseList = (ArrayList<String>) exerciseSet;
+//        Collections.shuffle(exerciseList);
+//
+//        //code that loops through the list with a random number 0-userReps
+//        for(int i = 0; i < numExercises; i++ ){
+//            //randomly generated rep number
+//            Random rand = new Random(numExercises);
+//            String currentExercise = exerciseList.get(i);
+//            exerciseView.setText(rand + currentExercise);
+//
+//        }
 
     }
+
+
 
     @Override
     public void onClick(View view) {
