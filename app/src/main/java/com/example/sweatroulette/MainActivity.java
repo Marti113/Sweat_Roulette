@@ -12,13 +12,12 @@ import java.util.HashSet;
 
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener  {
 
     private Set<String> exerciseSet;
-    private int userReps;
-    private CheckBox pushUps;
+    //private CheckBox pushUps;
     private TextView exerciseView;
-    private Button startWorkout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,16 +25,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         exerciseSet = new HashSet<>();
-        pushUps = findViewById(R.id.pushups);
+        //pushUps = findViewById(R.id.pushups);
         //need to get a value from the user (Reps) and turn into an int
-        //userReps = Integer.parseInt(findViewById(R.id.numberSigned).toString());
+        TextView numberView = findViewById(R.id.number);
+        int userReps = 0;
+        try {
+            userReps = Integer.parseInt(numberView.getText().toString());
+        } catch (NumberFormatException e) {
+            userReps = -1;
+        }
         exerciseView = findViewById(R.id.exerciseView);
         //start workout button and click listener
-        startWorkout = findViewById(R.id.workout);
+        final Button startWorkout = findViewById(R.id.workout);
         startWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 workout();
+                startWorkout.setText("Next!");
             }
         });
     }

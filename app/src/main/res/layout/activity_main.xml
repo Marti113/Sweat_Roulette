@@ -53,7 +53,7 @@
             android:text="Squats"
             android:onClick ="onCheckboxClicked"/>
 
-</LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -133,29 +133,35 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/numberSigned"
+            android:id="@+id/number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="numberSigned" />
+            android:inputType="number"
+            android:text="0" />
 
 
     </LinearLayout>
 
+
     <TextView
         android:id="@+id/exerciseView"
         android:layout_width="match_parent"
-        android:layout_height="365dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_marginTop="10dp"
         android:text="" />
 
     <Button
         android:id="@+id/workout"
         android:layout_width="match_parent"
-        android:layout_height="99dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".25"
         android:text="Begin Workout!"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
 
 </LinearLayout>
+
+
