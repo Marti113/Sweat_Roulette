@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.GridLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     //eventually will be the finished list of workouts and reps
     private List<String> shuffledWorkout;
     private Button startWorkout;
+    GridLayout checkMarkGrid;
 
 
     @Override
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         exerciseSet = new HashSet<>();
-
+        checkMarkGrid = findViewById(R.id.checkMarkLayout);
         //need to get a value from the user (Reps) and turn into an int
         numberView = findViewById(R.id.number);
         userReps = 0;
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //clear checkmarks
-
+                clearCheckMarks();
                 //clear exerciseSet, shuffleWorkout
                 exerciseSet.clear();
                 shuffledWorkout.clear();
@@ -127,6 +129,15 @@ public class MainActivity extends AppCompatActivity {
                 //call onCreate()?
             }
         });
+
+    }
+
+    private void clearCheckMarks(){
+
+        for (int i = 0; i <checkMarkGrid.getChildCount(); i++ ){
+            CheckBox workout = (CheckBox) checkMarkGrid.getChildAt(i);
+            workout.setChecked(false);
+        }
 
     }
 
