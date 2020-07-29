@@ -94,9 +94,8 @@ public class MainActivity extends AppCompatActivity {
             //adds random reps and shuffled exercises to new list
             shuffledWorkout.add(reps + " " + exerciseList.get(i));
         }
-
-        //code for testing
-        //System.out.println(shuffledWorkout);
+        //clear list for next workout
+        exerciseList.clear();
         return shuffledWorkout;
     }
 
@@ -120,7 +119,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //clear checkmarks
 
-                //clear exerciseSet
+                //clear exerciseSet, shuffleWorkout
+                exerciseSet.clear();
+                shuffledWorkout.clear();
+                //clear userReps?
 
                 //call onCreate()?
             }
