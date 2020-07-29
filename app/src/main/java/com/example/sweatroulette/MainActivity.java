@@ -20,12 +20,13 @@ import java.util.Set;
 public class MainActivity extends AppCompatActivity {
 
     private Set<String> exerciseSet;
-    //private CheckBox pushUps;
     private TextView exerciseView;
     private int userReps;
     TextView numberView;
     //keeps track of the rounds of exercises performed
     private int roundCount;
+    //eventually will be the finished list of workouts and reps
+    private List<String> shuffledWorkout;
 
 
     @Override
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         exerciseSet = new HashSet<>();
-        //pushUps = findViewById(R.id.pushups);
+
         //need to get a value from the user (Reps) and turn into an int
         numberView = findViewById(R.id.number);
         userReps = 0;
@@ -49,15 +50,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 generateWorkout();
-                startWorkout.setText("Next!");
+                startWorkout.setText("Next Exercise");
                 roundCount = exerciseSet.size()-1;
+                nextExercise(shuffledWorkout);
                 startWorkout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        startWorkout.setText("2nd+!");
-                        nextExercise(new ArrayList<String>());
+                        startWorkout.setText("Next Exercise");
+                        nextExercise(shuffledWorkout);
                     }
                 });
+
             }
         });
     }
@@ -80,22 +83,31 @@ public class MainActivity extends AppCompatActivity {
         }
 
         int numExercises = exerciseSet.size()-1;
-        List<String> exerciseList = new ArrayList<>(exerciseSet);
 
+        List<String> exerciseList = new ArrayList<>(exerciseSet);
+        Collections.shuffle(exerciseList);
+
+        /** Code for testing
         List<String> testList = new ArrayList<String>();
         testList.add("pushups");
         testList.add("situps");
         testList.add("burpees");
-
         Collections.shuffle(testList);
+         **/
 
         //new List to be filled in for loop with random exercises and reps
-        List<String> shuffledWorkout = new ArrayList<String>();
+        shuffledWorkout = new ArrayList<String>();
         Random rand = new Random();
         //code that loops through the list with a random number 0-userReps
-        for(int i = 0; i < 3; i++ ){
+        for(int i = 0; i < exerciseList.size(); i++ ){
+            //generates random number of reps (1...userReps)
             int reps = rand.nextInt(userReps)+1;
-            shuffledWorkout.add(reps + " " + testList.get(i));
+
+            /*code for testing
+            shuffledWorkout.add(reps + " " + testList.get(i));*/
+
+            //adds random reps and shuffled exercises to new list
+            shuffledWorkout.add(reps + " " + exerciseList.get(i));
         }
 
         //code for testing
@@ -105,9 +117,13 @@ public class MainActivity extends AppCompatActivity {
 
     //iterates through the generated workout list - shuffledWorkout
     private void nextExercise(List<String> workoutList){
-        if(roundCount > 0) {
-            //exerciseView.setText(workoutList.get(roundCount));
+        if(roundCount >= 0) {
+            exerciseView.setText(workoutList.get(roundCount));
             roundCount --;
+        }
+        else{
+            exerciseView.setText("Finished!");
+            //add reset button and logic here
         }
     }
 
