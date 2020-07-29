@@ -17,13 +17,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener  {
+public class MainActivity extends AppCompatActivity {
 
     private Set<String> exerciseSet;
     //private CheckBox pushUps;
     private TextView exerciseView;
     private int userReps;
     TextView numberView;
+    //keeps track of the rounds of exercises performed
+    private int roundCount;
 
 
     @Override
@@ -48,6 +50,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onClick(View view) {
                 generateWorkout();
                 startWorkout.setText("Next!");
+                roundCount = exerciseSet.size()-1;
+                startWorkout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        startWorkout.setText("2nd+!");
+                        nextExercise(new ArrayList<String>());
+                    }
+                });
             }
         });
     }
@@ -81,24 +91,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //new List to be filled in for loop with random exercises and reps
         List<String> shuffledWorkout = new ArrayList<String>();
-
+        Random rand = new Random();
         //code that loops through the list with a random number 0-userReps
         for(int i = 0; i < 3; i++ ){
-            Random rand = new Random();
             int reps = rand.nextInt(userReps)+1;
             shuffledWorkout.add(reps + " " + testList.get(i));
         }
 
-        //let user know the workout is finished
-        System.out.println(shuffledWorkout);
+        //code for testing
+        //System.out.println(shuffledWorkout);
         return shuffledWorkout;
     }
 
-
-
-
-    @Override
-    public void onClick(View view) {
-
+    //iterates through the generated workout list - shuffledWorkout
+    private void nextExercise(List<String> workoutList){
+        if(roundCount > 0) {
+            //exerciseView.setText(workoutList.get(roundCount));
+            roundCount --;
+        }
     }
+
+
+
+
 }
