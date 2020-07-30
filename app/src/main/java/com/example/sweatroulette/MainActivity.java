@@ -119,14 +119,7 @@ public class MainActivity extends AppCompatActivity {
         startWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //clear checkmarks
-                clearCheckMarks();
-                //clear exerciseSet, shuffleWorkout
-                exerciseSet.clear();
-                shuffledWorkout.clear();
-                //clear userReps?
-
-                //call onCreate()?
+                newWorkout();
             }
         });
 
@@ -141,4 +134,33 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void newWorkout() {
+        //clear checkmarks
+        clearCheckMarks();
+        //clear exerciseSet, shuffleWorkout
+        exerciseSet.clear();
+        shuffledWorkout.clear();
+        userReps = 0;
+        numberView.setText("0");
+        exerciseView.setText("");
+        startWorkout.setText("Start!");
+        generateWorkout();
+
+        startWorkout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                generateWorkout();
+                startWorkout.setText("Next Exercise");
+                roundCount = exerciseSet.size() - 1;
+                nextExercise(shuffledWorkout);
+                startWorkout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        nextExercise(shuffledWorkout);
+                    }
+                });
+            }
+
+        });
+    }
 }
