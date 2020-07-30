@@ -1,4 +1,4 @@
-package com.example.sweatroulette;
+package io.github.marti113.sweatroulette;
 
 import org.junit.Test;
 
