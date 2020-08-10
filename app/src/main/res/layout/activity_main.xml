@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#C7ECE2"
     tools:context="io.github.marti113.sweatroulette.MainActivity">
 
     <RelativeLayout
@@ -17,11 +18,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pick your exercises"
-            android:textSize="10pt"
+            android:textSize="15pt"
+            android:textFontWeight="10"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_centerInParent="true"/>
 
     </RelativeLayout>
 
@@ -34,7 +37,8 @@
         android:columnCount="3"
         android:orientation="horizontal"
         android:rowCount="3"
-        android:id="@+id/checkMarkLayout">
+        android:id="@+id/checkMarkLayout"
+        android:layout_margin="10dp">
 
 
         <CheckBox
@@ -86,14 +90,14 @@
             android:layout_width="124dp"
             android:layout_height="90dp"
             android:onClick="onCheckboxClicked"
-            android:text="Lunge" />
+            android:text="Lunges" />
 
         <CheckBox
             android:id="@+id/workout8"
             android:layout_width="124dp"
             android:layout_height="90dp"
             android:onClick="onCheckboxClicked"
-            android:text="Kettle Bell Swing" />
+            android:text="Kettle Bell Swings" />
 
         <CheckBox
             android:id="@+id/workout9"
@@ -114,6 +118,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
+            android:layout_marginStart="10dp"
             android:text="Select your max number of reps"
             android:textSize="10pt"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -140,6 +145,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="15dp"
         android:layout_weight="2"
         android:text=""
         android:textSize="25dp" />
