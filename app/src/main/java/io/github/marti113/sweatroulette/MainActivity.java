@@ -68,14 +68,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCheckboxClicked(View view){
 
-//        String exercise = ((CheckBox) view).getText().toString();
-//        exerciseSet.add(exercise);
-
     }
 
+    //checks the checkboxes after the begin button is clicked for if they are checked or not
     private void isChecked() {
 
-        for(int i = 1; i <10; i++){
+        for(int i = 1; i <= checkMarkGrid.getChildCount(); i++){
             String exerciseID = "workout" + i;
             int resID = getResources().getIdentifier(exerciseID, "id", getPackageName());
             CheckBox exercise = findViewById(resID);
@@ -84,11 +82,13 @@ public class MainActivity extends AppCompatActivity {
                 exerciseSet.add(exerciseString);
             }
         }
+
     }
 
 
     public List<String> generateWorkout(){
 
+        //call isChecked method so only checked exercises are generated
         isChecked();
 
         try {
