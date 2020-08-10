@@ -68,13 +68,28 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCheckboxClicked(View view){
 
-        String exercise = ((CheckBox) view).getText().toString();
-        exerciseSet.add(exercise);
+//        String exercise = ((CheckBox) view).getText().toString();
+//        exerciseSet.add(exercise);
 
+    }
+
+    private void isChecked() {
+
+        for(int i = 1; i <10; i++){
+            String exerciseID = "workout" + i;
+            int resID = getResources().getIdentifier(exerciseID, "id", getPackageName());
+            CheckBox exercise = findViewById(resID);
+            if(exercise.isChecked()){
+                String exerciseString = exercise.getText().toString();
+                exerciseSet.add(exerciseString);
+            }
+        }
     }
 
 
     public List<String> generateWorkout(){
+
+        isChecked();
 
         try {
             userReps = Integer.parseInt(numberView.getText().toString());
