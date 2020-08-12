@@ -38,13 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         exerciseSet = new HashSet<>();
         checkMarkGrid = findViewById(R.id.checkMarkLayout);
-        //need to get a value from the user (Reps) and turn into an int
+//        //need to get a value from the user (Reps) and turn into an int
         numberView = findViewById(R.id.number);
         userReps = 0;
-        try {
-            userReps = Integer.parseInt(numberView.getText().toString());
-        } catch (NumberFormatException e) {
-        }
+        parseUserReps();
         exerciseView = findViewById(R.id.exerciseView);
         //start workout button and click listener
         startWorkout = findViewById(R.id.workout);
@@ -86,15 +83,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public List<String> generateWorkout(){
+    private List<String> generateWorkout(){
 
         //call isChecked method so only checked exercises are generated
         isChecked();
-
-        try {
-            userReps = Integer.parseInt(numberView.getText().toString());
-        } catch (NumberFormatException e) {
-        }
+        //calls helper method
+        parseUserReps();
 
         List<String> exerciseList = new ArrayList<>(exerciseSet);
         Collections.shuffle(exerciseList);
@@ -176,5 +170,22 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    //helper method parses the userReps input into an integer
+    private int parseUserReps(){
+
+        try {
+            userReps = Integer.parseInt(numberView.getText().toString());
+            //maxRep limits reps to 50 regardless of user input
+            int maxRep = 25;
+            if(userReps > maxRep){
+                userReps = maxRep;
+                numberView.setText("25");
+            }
+        } catch (NumberFormatException e) {
+            return 0;
+        }
+        return userReps;
     }
 }
